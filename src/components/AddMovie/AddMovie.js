@@ -2,12 +2,12 @@ import React, { useState ,useRef } from 'react';
 
 import classes from './AddMovie.module.css';
 
-function AddMovie() {
+function AddMovie(props) {
   const titleRef = useRef('');
   const openingTextRef = useRef('');
   const releaseDateRef = useRef('');
 
-   const [title, setTitle] = useState('');
+//    const [title, setTitle] = useState('');
 
   function submitHandler(event) {
     event.preventDefault();
@@ -18,15 +18,17 @@ function AddMovie() {
       releaseDate: releaseDateRef.current.value,
     };
 
-    console.log(movie);
-     setTitle('');
+    props.onAddMovie(movie);
+
+    // console.log(movie);
+    // setTitle('');
   }
 
   return (
     <form onSubmit={submitHandler}>
       <div className={classes.control}>
         <label htmlFor='title'>Title</label>
-        <input type='text' id='title' value={title} ref={titleRef} />
+        <input type='text' id='title' ref={titleRef} />
       </div>
       <div className={classes.control}>
         <label htmlFor='opening-text'>Opening Text</label>
