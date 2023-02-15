@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
+
 import classes from "./ContactUs.module.css";
 
-const ContactUs = () => {
+const ContactUS = () => {
     const name = useRef('');
     const email = useRef('');
     const phoneNumber = useRef('');
@@ -63,4 +64,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default ContactUS;
