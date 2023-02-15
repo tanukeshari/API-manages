@@ -8,7 +8,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const ref = useRef(true);
-  // console.log(ref)
+ 
 
   const fetchMoviesHandler = useCallback( async () => {  
     setIsLoading(true);
@@ -42,27 +42,12 @@ function App() {
   useEffect(() => {          
     fetchMoviesHandler();
   }, [fetchMoviesHandler]);
-
-  // let content = <p>Found no movies.</p>;
-
-  // if(movies.length > 0) {
-  //   content = <MoviesList movies={movies} />;
-  // }
-
-  // if(error) {
-  //   content = <p>{error}</p>
-  //   set
-  // }
-
-  // if(isLoading) {
-  //   content = <p>Data is Loading...</p>;
-  // }
   return (
     <React.Fragment>
       <section>
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>      </section>
       <section> 
-        {/* {content} */}
+     
        {!isLoading && movies.length > 0 && <MoviesList movies={movies} />}
        {!isLoading && movies.length === 0 && !error &&<p>Found no movies.</p>}
        {isLoading && <p>Data is Loading...</p>}
