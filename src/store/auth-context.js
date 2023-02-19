@@ -1,36 +1,49 @@
-import React, { useState} from "react";
+import React, { useState, useEffect, useCallback } from 'react';
+
+let logoutTimer;
 
 const AuthContext = React.createContext({
-    token: '',
-    isLoggedIn: false,
-    login: (token) => {},
-    logout: () => {},
+  token: '',
+  isLoggedIn: false,
+  login: (token) => {},
+  logout: () => {},
 });
 
+
+
 export const AuthContextProvider = (props) => {
-    const [token, setToken] = useState(null);
+ 
+  const [token, setToken] = useState(null);
 
-    const userIsLoggedIn = !!token; //!! is trick of js 2nd ! for val available or nor && 1st ! give boolean for that true/false
+  const userIsLoggedIn = !!token;
 
-    const loginHandler = (token) => {
-        setToken(token);
-    };
+  
 
-    const logoutHandler = () => {
-        setToken(null);
-    };
+  const loginHandler = (token) => {
+    setToken(token);
+    localStorage.setItem('token', token);
+    
+  };
 
-    const contextValue = {
-        token: token,
-        isLoggedIn: userIsLoggedIn,
-        login: loginHandler,
-        logout: logoutHandler,
-    };
+  const logoutHandler = (id) =>{
+    setToken(null)
+    localStorage.removeItem('token');
+  }
 
-    return (
-    <AuthContext.Provider value={contextValue}> 
-      {props.children} 
-    </AuthContext.Provider>)
+  
+  const contextValue = {
+    token: token,
+    isLoggedIn: userIsLoggedIn,
+    login: loginHandler,
+    logout:logoutHandler,
+    
+  };
+
+  return (
+    <AuthContext.Provider value={contextValue}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthContext;
