@@ -37,10 +37,10 @@ const productsDetails = [
     imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
 
     ProductReview: [
-        { name: 'Milan', review: 'I recommend this product'},
-        { name: 'Vikesh', review: 'ok, product'},
-        { name: 'Zoya', review: 'good in this price'},
-        { name: 'Krishna', review: 'worth it'},
+        { name: 'tanu', review: 'I recommend this product'},
+        { name: 'muskan', review: 'ok, product'},
+        { name: 'anjali', review: 'good in this price'},
+        { name: 'priya', review: 'worth it'},
     ]
     },
     {
