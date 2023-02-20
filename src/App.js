@@ -27,8 +27,8 @@ children:[
 ],
   },
 ]);
-
 function App() {
+  
   return (
     <CartProvider>
       <RouterProvider router = {router}/>
