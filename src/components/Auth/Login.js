@@ -4,6 +4,8 @@ import { useContext, useRef, useState } from 'react';
 import classes from './login.module.css';
 import AuthContext  from '../../store/auth-context';
 
+
+
 const Login = () => {
   const history = useNavigate();
   const emailInputRef = useRef();
@@ -32,7 +34,7 @@ if (isLogin) {
   url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8'
 }
 
-    fetch (url, {
+    fetch(url, {
       method: 'POST',
       body: JSON.stringify({
         email: enteredEmail,
@@ -48,17 +50,21 @@ if (isLogin) {
       if (res.ok) {
         return res.json();
       } else {
-        res.json().then(data => {   // Json also return promises tanu
+        res.json().then(data => {   // Json also return promises milan
           let errorMessage = 'Authentication failed'
           if(data && data.error && data.error.message) {
           errorMessage = data.error.message
           }
-         throw new Error(errorMessage);
-        });
+
+        throw new Error(errorMessage);
+        })
       }
     })
-    .then((data) => {
-      authCtx.login(data.idToken);
+    .then((data) => {                             // here below data.expiresIn comming from firefox 1hrs its syntax of firefox fm,
+      const expirationTime = new Date(
+        new Date().getTime() + +data.expiresIn * 1000)
+        ; // convert to ms because its in not ms
+      authCtx.login(data.idToken, expirationTime.toISOString());     //to str i passed in authctx in date obj
       history('/');
       localStorage.setItem('idToken',data.idToken)
     })
@@ -98,7 +104,7 @@ return (
             className={classes.toggle}
             onClick={switchAuthModeHandler}
           >
-            {isLogin ? "Create new account" : "login with existing account"}
+            {isLogin ? "Create new account" : "Login with existing account"}
           </button>
         </div>
       </form>
@@ -107,4 +113,3 @@ return (
 };
 
 export default Login;
-
