@@ -19,12 +19,10 @@ const Header = () => {
                 <div>
                 <ul className={classes.flex}>
                     <li><NavLink to="/">Home</NavLink></li>
-                    <li><NavLink to="/Product">Store</NavLink></li>
-                    <li><NavLink to="/About">About</NavLink></li>
-                    <li><NavLink to='/ContactUs'>Contact Us</NavLink></li>
-                    <li><NavLink to='/Profile'> Profile</NavLink></li>
-                    <li><NavLink to='/login'>login</NavLink></li>
-                    
+                    <li><NavLink to="/products">Store</NavLink></li>
+                    <li><NavLink to='/about'>About</NavLink></li>
+                    <li><NavLink to='/contact'>Contact Us</NavLink></li>
+                    <li><NavLink to='/login'>Login</NavLink></li>
                 </ul>
                 </div>
                 <div className={classes.cartsection}>

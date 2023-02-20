@@ -1,39 +1,41 @@
 import React from "react";
-import {createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import Header from "./components/Layout/Header";
-import Product from './components/Products/Product';
-import CartProvider from'./store/cartProvider';
+import Products from "./components/Products/Product";
+import CartProvider from "./store/cartProvider";
 import About from "./components/Pages/About/About";
-import UserProfile from './components/Layout/Profile/UserProfile';
 import ContactUs from './components/Pages/ContactUS/ContactUs';
-import AuthPage from './pages/AuthPage';
-import HomePage from './pages/HomePage';
-import Login from './components/Auth/Login';
+import HomePage from "./pages/HomePage";
 
-const router = createBrowserRouter([
+
+import Product1 from "./components/Products/ProductImage/ProductImage";
+import Login from "./components/Auth/Login";
+
+const router = createBrowserRouter( [ 
   {
-    path :'/',
-element: <Header/>,
-children:[
-
-{path:'/', element:<HomePage/>},
-{path:'/Product',element:<Product/>},
-{path:'/About', element:<About/>},
-{path:'/Auth', element:<AuthPage/>},
-{path:'/ContactUs',element:<ContactUs/>},
-{path:'/Profile', element:<UserProfile/>},
-{path:'/Login', element: <Login/>},
-
-],
+    path: '/',
+    element: <Header/>,
+    children: [
+      { path: '/', element: <HomePage/> },
+      { path: '/products', element: <Products/> },
+      { path: '/about', element: <About/> },
+      { path: '/contact', element: <ContactUs/>},
+      {path: '/products/:id', element: <Product1/>},
+      {path: '/login', element: <Login/>},
+    ],
   },
-]);
+] );
+
 function App() {
-  
   return (
     <CartProvider>
-      <RouterProvider router = {router}/>
-      </CartProvider>
-    
+      <RouterProvider router={router}/>
+      {/* <Header/>
+      //<main>
+       // <Products/>
+      //</main> */}
+    </CartProvider>
   );
 }
 
