@@ -1,14 +1,15 @@
 import { useRef, useContext } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
-import authcontext from '../../../store/auth-context';
+import AuthContext from '../../../store/auth-context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
   const history = useNavigate();
 
   const newPasswordInputRef = useRef();
-  const authCtx = useContext(authcontext);
+  const authCtx = useContext(AuthContext);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -16,8 +17,8 @@ const ProfileForm = () => {
     const enteredNewPassword = newPasswordInputRef.current.value;
     // here if u want to add validation.
 
-    fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB5oKMcdKtIDlkpm6VlixKOjXJD6TCThtc'
-    ,{
+    fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyB7YQFYYb38RQ3WyQeXcvIF48ZpxoEJKK8',
+    {
       method: 'POST',
       body: JSON.stringify({
         idToken: authCtx.token,
@@ -30,7 +31,7 @@ const ProfileForm = () => {
     }).then(res => {
       //we assume this always true so, here i dont put any error handeling
 
-      history.replace('/');
+      history('/');
     })
 
   }
