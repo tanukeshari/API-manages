@@ -31,12 +31,12 @@
     background: inherit;
     color: #56CCF2;
 }
-.play-btn:hover,.latest-album:hover {
+/* .play-btn:hover,.latest-album:hover {
     color: #141313;
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
-}
+} */
 
 .header1 {
     text-align: center;
@@ -51,16 +51,13 @@
     text-align: center;
     margin-bottom: 20px;
 }
-.tour-container h2 {
-
-}
 
 .tour-item {
     display: flex;
     border-bottom: 1px solid black;
     padding: 10px;
     justify-content: space-between;
-    background-color: aquamarine;
+    background-color: #56CCF2;
     margin: 2px 99px;
 }
 
@@ -86,8 +83,8 @@
     border-radius: 12px;
     background-color: #fff;
 }
-.buy-btn:hover {
+/* .buy-btn:hover {
     background-color: #56CCF2;
     color: #fff;
     cursor: pointer;
-}
+} */
